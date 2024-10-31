@@ -11,13 +11,21 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            
         }
+        html {
+    scroll-behavior: smooth; /* Habilita desplazamiento suave */
+   
+}
+
+
 
         body {
             font-family: Arial, sans-serif;
             color: #333;
             line-height: 1.6;
             overflow-x: hidden;
+            
         }
 
         /* Estilo del encabezado y navegación */
@@ -34,6 +42,7 @@
         nav {
             display: flex;
             justify-content: center;
+            width: 100%;
         }
 
         nav ul {
@@ -50,6 +59,7 @@
             text-decoration: none;
             font-weight: bold;
             transition: color 0.3s ease;
+            
         }
 
         nav ul li a:hover {
@@ -73,28 +83,32 @@
         }
 
         /* Hero Content */
-        .hero-content {
-            width: 100%; /* Ancho completo */
-            padding: 20px; /* Espaciado interno */
-            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.5); /* Sombra para dar profundidad */
-            text-align: center; /* Centrar texto */
-            background-color: rgba(0, 0, 0, 0.7); /* Fondo negro semitransparente */
-        }
+        /* Estilo del Hero Content */
+.hero-content {
+    width: 100%; /* Ancho completo */
+    padding: 20px; /* Espaciado interno */
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.5); /* Sombra para dar profundidad */
+    text-align: center; /* Centrar texto */
+    background-color: rgba(0, 0, 0, 0.7); /* Fondo negro semitransparente */
+}
 
-        .hero-content h1 {
-            font-size: 60px;
-            line-height: normal;
-           font-family: 'Montserrat', sans-serif;
-          
-        }
+/* Ajustar el tamaño del texto del h1 */
+.hero-content h1 {
+    font-size: clamp(40px, 8vw, 60px); /* Ajusta el tamaño entre 40px y 60px */
+    line-height: normal;
+    font-family: 'Montserrat', sans-serif;
+    margin: 0; /* Elimina el margen para un mejor centrado */
+    padding: 10px; /* Espaciado interno opcional */
+    white-space: normal; /* Permite que el texto se ajuste a múltiples líneas */
+}
 
-        .hero-content p {
-            margin-top: 0;
-            font-size: 24px;
-            line-height: 1.1;
-            font-family: 'Roboto',sans-serif;
-            
-        }
+/* Ajustar el tamaño del párrafo */
+.hero-content p {
+    margin-top: 10px; /* Margen superior para separación */
+    font-size: clamp(18px, 4vw, 24px); /* Ajusta el tamaño entre 18px y 24px */
+    line-height: 1.5; /* Mejora la legibilidad */
+    font-family: 'Roboto', sans-serif;
+}
          /* estilo del texto*/
          @keyframes slide-in {
     0% {
@@ -119,6 +133,7 @@
         /*estilo de la linea*/
 
         .line {
+            
             width: 100px; /* Ancho final de la línea */
             height: 2px; /* Altura de la línea */
             background-color: #ffdd57; /* Color de la línea */
@@ -162,29 +177,82 @@
 
 
 
-#sectionInvent {
+        #sectionInvent {
+    font-size: 5vw; /* Tamaño base que se adapta a la ventana */
+    line-height: normal;
+    font-family: 'Montserrat', sans-serif;
     position: relative;
-            width: 100%;
-            height: 50vh; /* Mantiene la altura completa de la ventana */
-            display: flex;
-            justify-content: center; /* Centra el contenido horizontalmente */
-            align-items: flex-end; /* Alinear al final verticalmente */
-            color: white;
-            overflow: hidden;
-            background-image: url('./img/concesionaria.jpg');
-            background-size: cover; /* Cubre todo el contenedor */
-            background-attachment: fixed; /* Mantiene la imagen fija */
-            background-position: center; /* Centra la imagen */
+    width: 100%;
+    height: 50vh; /* Mantiene la altura completa de la ventana */
+    display: flex;
+    justify-content: center; /* Centra el contenido horizontalmente */
+    align-items: center; /* Alinear al centro verticalmente */
+    color: rgb(255, 255, 255);
+    overflow: hidden;
+    background-image: url('./img/concesionaria.jpg');
+    background-size: cover; /* Cubre todo el contenedor */
+    background-position: center; /* Centra la imagen */
+    background-attachment: fixed;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.5); /* Sombra para dar profundidad */
+    text-align: center;
 }
+
+/* Pseudo-elemento para el fondo oscuro */
+#sectionInvent::before {
+    content: '';
+    position: absolute; /* Posiciona el pseudo-elemento en relación a su contenedor */
+    top: 0; /* Comienza desde la parte superior */
+    left: 0; /* Comienza desde la izquierda */
+    right: 0; /* Se extiende a la derecha */
+    bottom: 0; /* Se extiende a la parte inferior */
+    background-color: rgba(0, 0, 0, 0.7); /* Fondo negro semitransparente */
+    z-index: 1; /* Asegura que esté detrás del texto */
+}
+
+#sectionInvent h1 {
+    position: relative; /* Necesario para que el texto esté sobre el pseudo-elemento */
+    z-index: 2; /* Asegura que el texto esté por encima del fondo oscuro */
+    margin: 0; /* Elimina el margen para un mejor centrado */
+    padding: 10px; /* Espaciado interno opcional */
+    white-space: normal; /* Permite que el texto se ajuste a múltiples líneas */
+    text-align: center; /* Centra el texto */
+    font-size: clamp(24px, 8vw, 48px); /* Tamaño responsivo entre 24px y 48px */
+}
+
+#sectionInvent p {
+    position: relative; /* Necesario para que el texto esté sobre el pseudo-elemento */
+    z-index: 2; /* Asegura que el texto esté por encima del fondo oscuro */
+    margin: 0; /* Elimina el margen para un mejor centrado */
+    padding: 10px; /* Espaciado interno opcional */
+    white-space: normal; /* Permite que el texto se ajuste a múltiples líneas */
+    text-align: center; /* Centra el texto */
+    font-size: clamp(16px, 4vw, 20px); /* Tamaño responsivo entre 16px y 20px */
+}
+
 
         .car-brands {
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-around;
     align-items: center;
     background-color: #d3d3d3; /* Gris claro */
     height: 250px;
     cursor: pointer;
+    width: 100%;
+    padding: 20px;
 }
+
+
+@media (max-width: 540px) {
+    .car-brands {
+        height: 350px;
+    }
+}
+    
+    
+   
+    
+
 
 .brand-logo {
     width: 100px; /* Ajusta el tamaño según sea necesario */
@@ -243,12 +311,10 @@
         }
 
         /* Sección Inventario */
-        #inventory {
-            padding: 60px 20px;
-            text-align: center;
-            background-color: #000000;
-        }
-
+      
+        .section-header {
+    z-index: 2;
+}
         #inventory h2 {
             font-size: 2.5em;
             margin-bottom: 30px;
@@ -260,6 +326,9 @@
             flex-wrap: wrap;
             justify-content: center;
             gap: 20px;
+            padding: 60px 20px;
+            text-align: center;
+            background-color: #000000;
         }
 
         .car {
@@ -282,60 +351,164 @@
             border-radius: 8px;
         }
 
-        /* Sección de Testimonios */
-        #testimonials {
-            padding: 60px 20px;
-            background-color: #f4f4f4;
-            text-align: center;
-        }
+     
 
-        .testimonial {
-            margin: 20px 0;
-            font-style: italic;
-            color: #555;
-            max-width: 600px;
-            margin: auto;
-        }
+    /* Sección de contacto */
+.contact-section {
+    text-align: center;
+    padding: 40px 20px;
+    background-color: #1f1f1f;
+}
 
-        /* Sección de Contacto */
-        #contact {
-            padding: 60px 20px;
-            background-color: #333;
-            color: #fff;
-            text-align: center;
-        }
+/* Título principal */
+.contact-title {
+    font-family: Montserrat, sans-serif;
+    color: #ffda1f;
+    font-size: 3em;
+    margin: 0;
+    padding-top: 20px;
+    line-height: 1.1;
+}
 
-        #contact h2 {
-            font-size: 2.5em;
-            margin-bottom: 20px;
-        }
+/* Subtítulo */
+.contact-subtitle {
+    font-size: 1.2em;
+    color: #777;
+    margin-bottom: 20px;
+}
 
-        #contact form {
-            max-width: 400px;
-            margin: 0 auto;
-            display: flex;
-            flex-direction: column;
-        }
+/* Información de contacto */
+.contact-info {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    font-size: 1em;
+    color: #cfd3d9;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+}
 
-        #contact input, #contact textarea {
-            margin: 10px 0;
-            padding: 10px;
-            border-radius: 5px;
-            border: 1px solid #ddd;
-        }
+.contact-info p {
+    margin: 5px 0;
+}
 
-        #contact button {
-            padding: 10px;
-            border: none;
-            background-color: #555;
-            color: #fff;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
+.contact-info a {
+    color: #ffda1f;
+    text-decoration: none;
+}
 
-        #contact button:hover {
-            background-color: #666;
-        }
+.contact-info a:hover {
+    color: #ffffff;
+}
+
+/* Estilo para el contenedor del mapa */
+.map-container {
+    width: 80%; /* Ancho del mapa limitado al 80% en escritorio */
+    max-width: 800px;
+    margin: 0 auto; /* Centra el mapa */
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.map-container iframe {
+    width: 100%;
+    height: 300px;
+    border: none;
+}
+
+/* Redes sociales */
+.social-media {
+    margin-top: 20px;
+}
+
+.social-media ul {
+    list-style: none;
+    padding: 0;
+}
+
+.social-media li {
+    display: inline;
+    margin: 0 10px;
+}
+
+.social-media a {
+    text-decoration: none;
+    color: #ffda1f;
+}
+
+.social-media a:hover {
+    color: #ffffff;
+}
+
+/* Responsividad para tabletas */
+@media (max-width: 768px) {
+    .contact-title {
+        font-size: 2.5em;
+    }
+
+    .contact-subtitle {
+        font-size: 1em;
+    }
+
+    .contact-info {
+        font-size: 0.9em;
+        gap: 20px;
+    }
+
+    .map-container {
+        width: 90%; /* Ancho más amplio en tabletas */
+    }
+
+    .map-container iframe {
+        height: 250px;
+    }
+}
+
+/* Responsividad para dispositivos móviles */
+@media (max-width: 480px) {
+    .contact-title {
+        font-size: 2em;
+    }
+
+    .contact-subtitle {
+        font-size: 0.9em;
+    }
+
+    .contact-info {
+        font-size: 0.8em;
+        gap: 10px;
+        flex-direction: column;
+    }
+
+    .map-container {
+        width: 100%; /* Ancho completo en móviles */
+    }
+
+    .map-container iframe {
+        height: 200px;
+    }
+}
+
+
+
+
+        /* Estilos para el logo de WhatsApp */
+.whatsapp-icon {
+    position: fixed; /* Mantener en la posición fija */
+    bottom: 20px; /* Espacio desde la parte inferior */
+    right: 20px; /* Espacio desde la izquierda */
+    z-index: 1000; /* Asegurarse de que esté por encima de otros elementos */
+}
+
+.whatsapp-icon img {
+    width: 50px; /* Ajusta el tamaño según lo desees */
+    height: auto; /* Mantiene la proporción del logo */
+    transition: transform 0.3s ease; /* Transición suave para el efecto hover */
+}
+
+.whatsapp-icon:hover img {
+    transform: scale(1.1); /* Efecto de aumento al pasar el mouse */
+}
     </style>
 </head>
 <body>
@@ -346,7 +519,6 @@
             <ul>
                 <li><a href="#hero">Inicio</a></li>
                 <li><a href="#inventory">Inventario</a></li>
-                <li><a href="#testimonials">Testimonios</a></li>
                 <li><a href="#contact">Contacto</a></li>
             </ul>
         </nav>
@@ -356,7 +528,7 @@
 <section id="hero">
     <div class="hero-content">
         <h1 class="grow-text">ENCONTRA TU AUTO IDEAL</h1>
-        <p>CALIDAD Y CONFIANZA EN AUTOS USADOS A LOS MEJORES PRECIOS</p>
+        <p>CALIDAD Y CONFIANZA EN AUTOS USADOS AL MEJOR PRECIO</p>
         <div class="line animated-line"></div>
  
     </div>
@@ -371,17 +543,16 @@
 </section>
 
     <!--Section inventario-->
+    <section id="inventory">
     <section id="sectionInvent">
-        <div class="">
-            <h1 class="">ENCONTRA TU AUTO IDEAL</h1>
-            <p>CALIDAD Y CONFIANZA EN AUTOS USADOS A LOS MEJORES PRECIOS</p>
-            
-     
-        </div>
+        <div class="section-header">
+            <h1 class="">EXPLORA NUESTRA SELECCIÓN</h1>
+            <div class="line animated-line"></div>
+         </div>
     </section>
-    
-        <section id="inventory">
-            <h2>EXPLORA NUESTRA SELECCION</h2>
+    </section>
+        
+            
             <div class="inventory-container">
                 <div class="car">
                     <img src="./img/580028_1_im.jpg" alt="Auto 1">
@@ -444,36 +615,42 @@
                     <p>Descripción breve del auto.</p>
                 </div>
             </div>
-        </section>
+        
    
 
-   
-
-    
-    
-
-    <!-- Sección de Testimonios -->
-    <section id="testimonials">
-        <h2>Testimonios</h2>
-        <div class="testimonial">
-            <p>"La mejor concesionaria de autos."</p>
-        </div>
-        <div class="testimonial">
-            <p>"La mejor experiencia de compra que he tenido."</p>
-        </div>
-    </section>
-
-    <!-- Sección de Contacto -->
-    <section id="contact">
-        <h2>Contacto</h2>
-        <form>
-            <input type="text" placeholder="Nombre" required>
-            <input type="email" placeholder="Email" required>
-            <textarea placeholder="Mensaje" required></textarea>
-            <button type="submit">Enviar</button>
-        </form>
-    </section>
-
+            <div id="contact" class="contact-section">
+                <h4 class="contact-title">¡VENÍ A VISITARNOS!</h4>
+                <h6 class="contact-subtitle">¡Y RETIRATE MANEJANDO TU AUTO!</h6>
+                
+                <div class="contact-info">
+                    <div class="contact-email">
+                        <p>Email: <a href="mailto:info@misitio.com">info@misitio.com</a></p>
+                    </div>
+                    
+                    <div class="contact-address">
+                        <p>Av. Los Rosales 122</p>
+                        <p>28021, Madrid</p>
+                    </div>
+                    
+                    <div class="contact-phone">
+                        <p>Tel: 914-123-456</p>
+                        <p>Fax: 914-123-456</p>
+                    </div>
+                </div>
+                
+                <div class="map">
+                    <iframe title="Google Maps" width="100%" height="300" frameborder="0" scrolling="no" allowfullscreen="" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31715.076197134205!2d-3.4083192499737097!3d40.410417301848006!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd422bd5ab270f83%3A0xf04b14c0166d5ec8!2sAv.%20Los%20Rosales%20122%2C%2028021%20Madrid%2C%20Espa%C3%B1a!5e0!3m2!1ses!2sar!4v1636481732200!5m2!1ses!2sar"></iframe>
+                </div>
+                
+                <div class="social-media">
+                    <ul>
+                        <li><a href="http://www.facebook.com/WixEspanol" target="_blank">Facebook</a></li>
+                        <li><a href="http://twitter.com/MundoWix" target="_blank">Twitter</a></li>
+                        <li><a href="http://www.instagram.com/WixEspanol" target="_blank">Instagram</a></li>
+                    </ul>
+                </div>
+            </div>
+            
     <script>
         // Obtener el título
 const animatedTitle = document.querySelector('.animated-title');
@@ -487,7 +664,15 @@ function showTitleOnLoad() {
 window.addEventListener('load', showTitleOnLoad);
 
 
+
+
+
     </script>
+
+<!-- WhatsApp Logo -->
+<a href="https://wa.me/tu_numero_de_telefono" target="_blank" class="whatsapp-icon">
+    <img src="./img/Whatsapp-logo-1.png" alt="WhatsApp" />
+</a>
 
 </body>
 </html>
