@@ -111,9 +111,22 @@
 .hero-content p {
     margin: 20px; /* Margen superior para separación */
     font-size: clamp(18px, 4vw, 24px); /* Ajusta el tamaño entre 18px y 24px */
-    line-height: 1.5; /* Mejora la legibilidad */
+    line-height: 1.1; /* Mejora la legibilidad */
     font-family: 'Roboto', sans-serif;
+    opacity: 0;
+    animation: fadeIn 2s ease-out forwards; /* Ajusta la duración (1s) y el tipo de animación */
+   
 }
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
          /* estilo del texto*/
          @keyframes slide-in {
     0% {
@@ -128,7 +141,7 @@
 
 .grow-text {
     display: inline-block; /* Asegúrate de que el texto sea un bloque en línea */
-    animation: slide-in 1.0s ease-in-out forwards; /* Ajusta el tiempo según tu preferencia */
+    animation: slide-in 2.0s ease-in-out forwards; /* Ajusta el tiempo según tu preferencia */
     overflow: hidden; /* Para que el efecto de corte funcione correctamente */
 }
 
@@ -158,6 +171,7 @@
                 opacity: 1; /* Se vuelve visible */
             }
         }
+      
 
 
 
