@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Roboto:wght@400&display=swap">
+    <title>Concesionaria de Autos</title>
+    <style>
+        /* Estilos globales */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            color: #333;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Estilo del encabezado y navegación */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            color: #fff;
+            padding: 15px 0;
+            z-index: 1000;
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+        }
+
+        nav ul li {
+            margin: 0 20px;
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: #ffdd57;
+        }
+
+        /* Sección Hero con fondo fijo */
+        #hero {
+            position: relative;
+            width: 100%;
+            height: 100vh; /* Mantiene la altura completa de la ventana */
+            display: flex;
+            justify-content: center; /* Centra el contenido horizontalmente */
+            align-items: flex-end; /* Alinear al final verticalmente */
+            color: white;
+            overflow: hidden;
+            background-image: url('https://static.wixstatic.com/media/548a7f_af781423940d4b40b5d984ef5ac767db.jpg');
+            background-size: cover; /* Cubre todo el contenedor */
+            background-attachment: fixed; /* Mantiene la imagen fija */
+            background-position: center; /* Centra la imagen */
+        }
+
+        /* Hero Content */
+        .hero-content {
+            width: 100%; /* Ancho completo */
+            padding: 20px; /* Espaciado interno */
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.5); /* Sombra para dar profundidad */
+            text-align: center; /* Centrar texto */
+            background-color: rgba(0, 0, 0, 0.7); /* Fondo negro semitransparente */
+        }
+
+        .hero-content h1 {
+            font-size: 60px;
+            line-height: normal;
+           font-family: 'Montserrat', sans-serif;
+          
+        }
+
+        .hero-content p {
+            margin-top: 0;
+            font-size: 24px;
+            line-height: 1.1;
+            font-family: 'Roboto',sans-serif;
+            
+        }
+         /* estilo del texto*/
+         @keyframes slide-in {
+    0% {
+        clip-path: inset(0 100% 0 0); /* Comienza cortado por la derecha */
+        opacity: 0; /* Comienza invisible */
+    }
+    100% {
+        clip-path: inset(0 0 0 0); /* Termina completamente visible */
+        opacity: 1; /* Termina visible */
+    }
+}
+
+.grow-text {
+    display: inline-block; /* Asegúrate de que el texto sea un bloque en línea */
+    animation: slide-in 1.0s ease-in-out forwards; /* Ajusta el tiempo según tu preferencia */
+    overflow: hidden; /* Para que el efecto de corte funcione correctamente */
+}
+
+
+
+
+        /*estilo de la linea*/
+
+        .line {
+            width: 100px; /* Ancho final de la línea */
+            height: 2px; /* Altura de la línea */
+            background-color: #ffdd57; /* Color de la línea */
+            margin: 10px auto; /* Margen superior e inferior, centrada horizontalmente */
+            transform-origin: left; /* Establecer el origen de la transformación a la izquierda */
+            opacity: 0; /* Inicialmente invisible */
+            animation: growLine 1s ease forwards; /* Aplicar la animación */
+        }
+
+        @keyframes growLine {
+            0% {
+                transform: scaleX(0); /* Comienza en 0 (invisible) */
+                opacity: 0; /* Inicialmente invisible */
+            }
+            100% {
+                transform: scaleX(1); /* Termina en su tamaño original */
+                opacity: 1; /* Se vuelve visible */
+            }
+        }
+
+
+
+
+
+/* Estilo del título animado */
+.animated-title {
+    font-size: 38px; /* Tamaño de fuente */
+    line-height: 0.9em; /* Altura de línea */
+    text-align: center; /* Centrar texto */
+    opacity: 0; /* Inicialmente invisible */
+    transform: translateX(-100px); /* Desplazado a la izquierda */
+    transition: opacity 0.5s ease, transform 0.5s ease; /* Transición suave */
+}
+
+/* Clase que se añade cuando el título está visible */
+.show {
+            opacity: 1; /* Hacer visible */
+            transform: translateX(0); /* Volver a la posición original */
+            transition: opacity 1s ease, transform 1s ease; /* Aumentar el tiempo de transición */
+        }
+
+
+
+#sectionInvent {
+    position: relative;
+            width: 100%;
+            height: 50vh; /* Mantiene la altura completa de la ventana */
+            display: flex;
+            justify-content: center; /* Centra el contenido horizontalmente */
+            align-items: flex-end; /* Alinear al final verticalmente */
+            color: white;
+            overflow: hidden;
+            background-image: url('./img/concesionaria.jpg');
+            background-size: cover; /* Cubre todo el contenedor */
+            background-attachment: fixed; /* Mantiene la imagen fija */
+            background-position: center; /* Centra la imagen */
+}
+
+        .car-brands {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #d3d3d3; /* Gris claro */
+    height: 250px;
+    cursor: pointer;
+}
+
+.brand-logo {
+    width: 100px; /* Ajusta el tamaño según sea necesario */
+    transition: filter 0.3s; /* Suaviza el cambio del filtro */
+    filter: grayscale(100%); /* Convierte a blanco y negro */
+}
+
+.brand-logo:hover {
+    filter: grayscale(0%); /* Vuelve a color original al pasar el mouse */
+   
+}
+
+        /* Next Section */
+        #next-section {
+            background-color: #f4f4f4;
+            padding: 100px 20px;
+            font-size: 24px;
+            color: #333;
+            text-align: center;
+            min-height: 100vh;
+        }
+
+        /* Sección de Parallax */
+        #parallax-section {
+            position: relative;
+            height: 100vh;
+            overflow: hidden;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+
+        #parallax-section .parallax-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://static.wixstatic.com/media/548a7f_af781423940d4b40b5d984ef5ac767db.jpg');
+            background-size: cover;
+            background-position: center;
+            transform: translateZ(-1px) scale(1.5);
+            z-index: 0;
+            will-change: transform;
+        }
+
+        #parallax-section .content {
+            position: relative;
+            z-index: 1;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1.5s ease forwards;
+        }
+
+        /* Sección Inventario */
+        #inventory {
+            padding: 60px 20px;
+            text-align: center;
+            background-color: #000000;
+        }
+
+        #inventory h2 {
+            font-size: 2.5em;
+            margin-bottom: 30px;
+            color: #ffffff;
+        }
+
+        .inventory-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .car {
+            width: 250px;
+            border: 1px solid #ddd;
+            padding: 15px;
+            text-align: center;
+            background-color: #f9f9f9;
+            border-radius: 2px;
+            transition: transform 0.3s ease;
+        }
+
+        .car:hover {
+            transform: scale(1.05);
+        }
+
+        .car img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        /* Sección de Testimonios */
+        #testimonials {
+            padding: 60px 20px;
+            background-color: #f4f4f4;
+            text-align: center;
+        }
+
+        .testimonial {
+            margin: 20px 0;
+            font-style: italic;
+            color: #555;
+            max-width: 600px;
+            margin: auto;
+        }
+
+        /* Sección de Contacto */
+        #contact {
+            padding: 60px 20px;
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+        }
+
+        #contact h2 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+
+        #contact form {
+            max-width: 400px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+        }
+
+        #contact input, #contact textarea {
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+
+        #contact button {
+            padding: 10px;
+            border: none;
+            background-color: #555;
+            color: #fff;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        #contact button:hover {
+            background-color: #666;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Encabezado con navegación -->
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#hero">Inicio</a></li>
+                <li><a href="#inventory">Inventario</a></li>
+                <li><a href="#testimonials">Testimonios</a></li>
+                <li><a href="#contact">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+   <!-- Hero Section -->
+<section id="hero">
+    <div class="hero-content">
+        <h1 class="grow-text">ENCONTRA TU AUTO IDEAL</h1>
+        <p>CALIDAD Y CONFIANZA EN AUTOS USADOS A LOS MEJORES PRECIOS</p>
+        <div class="line animated-line"></div>
+ 
+    </div>
+</section>
+
+<section class="car-brands">
+    <img src="./img/Chevrolet-logo-1.png" alt="Chevrolet" class="brand-logo">
+    <img src="./img/Toyota-Logo-PNG.png" alt="Toyota" class="brand-logo">
+    <img src="./img/Audi_logo_PNG2.png" alt="Audi" class="brand-logo">
+    <img src="./img/BMW_logo_PNG1.png" alt="BMW" class="brand-logo">
+    <img src="./img/Fiat-Logo-PNG.png" alt="Fiat" class="brand-logo">
+</section>
+
+    <!--Section inventario-->
+    <section id="sectionInvent">
+        <div class="">
+            <h1 class="">ENCONTRA TU AUTO IDEAL</h1>
+            <p>CALIDAD Y CONFIANZA EN AUTOS USADOS A LOS MEJORES PRECIOS</p>
+            
+     
+        </div>
+    </section>
+    
+        <section id="inventory">
+            <h2>EXPLORA NUESTRA SELECCION</h2>
+            <div class="inventory-container">
+                <div class="car">
+                    <img src="./img/580028_1_im.jpg" alt="Auto 1">
+                    <h3>Modelo de Auto 1</h3>
+                    <p>Descripción breve del auto.</p>
+                </div>
+                <div class="car">
+                    <img src="./img/w-auto.jfif" alt="Auto 2">
+                    <h3>Modelo de Auto 2</h3>
+                    <p>Descripción breve del auto.</p>
+                </div>
+                <div class="car">
+                    <img src="./img/audi-1.webp" alt="Auto 3">
+                    <h3>Modelo de Auto 3</h3>
+                    <p>Descripción breve del auto.</p>
+                </div>
+                <div class="car">
+                    <img src="./img/audi-2.webp" alt="Auto 4">
+                    <h3>Modelo de Auto 4</h3>
+                    <p>Descripción breve del auto.</p>
+                </div>
+                <div class="car">
+                    <img src="./img/bmw-1.jfif" alt="Auto 5">
+                    <h3>Modelo de Auto 5</h3>
+                    <p>Descripción breve del auto.</p>
+                </div>
+                <div class="car">
+                    <img src="./img/bmw-2.webp" alt="Auto 6">
+                    <h3>Modelo de Auto 6</h3>
+                    <p>Descripción breve del auto.</p>
+                </div>
+                <div class="car">
+                    <img src="./img/cruze-1.jpg" alt="Auto 7">
+                    <h3>Modelo de Auto 7</h3>
+                    <p>Descripción breve del auto.</p>
+                </div>
+                <div class="car">
+                    <img src="./img/cruze-2.jpg" alt="Auto 8">
+                    <h3>Modelo de Auto 8</h3>
+                    <p>Descripción breve del auto.</p>
+                </div>
+                <div class="car">
+                    <img src="./img/clio-1.webp" alt="Auto 9">
+                    <h3>Modelo de Auto 9</h3>
+                    <p>Descripción breve del auto.</p>
+                </div>
+                <div class="car">
+                    <img src="./img/gol-1.jpg" alt="Auto 10">
+                    <h3>Modelo de Auto 10</h3>
+                    <p>Descripción breve del auto.</p>
+                </div>
+                <div class="car">
+                    <img src="./img/fiat-1.jpg" alt="Auto 11">
+                    <h3>Modelo de Auto 11</h3>
+                    <p>Descripción breve del auto.</p>
+                </div>
+                <div class="car">
+                    <img src="./img/corolla-1.jpg" alt="Auto 22">
+                    <h3>Modelo de Auto 12</h3>
+                    <p>Descripción breve del auto.</p>
+                </div>
+            </div>
+        </section>
+   
+
+   
+
+    
+    
+
+    <!-- Sección de Testimonios -->
+    <section id="testimonials">
+        <h2>Testimonios</h2>
+        <div class="testimonial">
+            <p>"La mejor concesionaria de autos."</p>
+        </div>
+        <div class="testimonial">
+            <p>"La mejor experiencia de compra que he tenido."</p>
+        </div>
+    </section>
+
+    <!-- Sección de Contacto -->
+    <section id="contact">
+        <h2>Contacto</h2>
+        <form>
+            <input type="text" placeholder="Nombre" required>
+            <input type="email" placeholder="Email" required>
+            <textarea placeholder="Mensaje" required></textarea>
+            <button type="submit">Enviar</button>
+        </form>
+    </section>
+
+    <script>
+        // Obtener el título
+const animatedTitle = document.querySelector('.animated-title');
+
+// Mostrar el título al cargar la página
+function showTitleOnLoad() {
+    animatedTitle.classList.add('show'); // Añadir clase para activar la animación
+}
+
+// Ejecutar la función al cargar la página
+window.addEventListener('load', showTitleOnLoad);
+
+
+    </script>
+
+</body>
+</html>
